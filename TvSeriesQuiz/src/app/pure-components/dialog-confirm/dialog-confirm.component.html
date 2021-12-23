@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Czy potwierdzasz akcję?</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="confirm()">
+      <mat-icon>done</mat-icon>
+      Tak
+    </button>
+    <button mat-raised-button color="warn" (click)="cancel()">
+      <mat-icon>clear</mat-icon>
+      Nie
+    </button>
+  </mat-card-actions>
+</mat-card>

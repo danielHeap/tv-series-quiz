@@ -1,0 +1,36 @@
+<mat-card>
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Pytanie</mat-label>
+      <input matInput placeholder="Wpisz pytanie" formControlName="question" />
+    </mat-form-field>
+    <app-form-errors [form]="form.question"></app-form-errors>
+
+    <mat-card-subtitle>
+      Odpowiedzi
+      <app-form-errors [form]="form.answersArray" [alwaysShow]="true"></app-form-errors>
+    </mat-card-subtitle>
+    <mat-card-actions>
+      <button mat-button color="accent" (click)="form.addAnswer()"><mat-icon>add_box</mat-icon>Dodaj odpowiedź</button>
+    </mat-card-actions>
+
+    <div *ngFor="let answerForm of form.answers; let i = index">
+      <div class="question-row">
+        <mat-checkbox [formControl]="answerForm.isTrue" (change)="setCorrectAnswer(answerForm)"> </mat-checkbox>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Odpowiedź {{ i + 1 }}</mat-label>
+          <input matInput placeholder="Wpisz odpowiedz" [formControl]="answerForm.answer" />
+        </mat-form-field>
+        <button mat-button color="accent" (click)="form.deleteAnswer(answerForm.id.value)">
+          <mat-icon>delete_box</mat-icon>
+        </button>
+      </div>
+      <app-form-errors [form]="answerForm.answer"></app-form-errors>
+    </div>
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="save()"><mat-icon>save</mat-icon>Zapisz</button>
+      <button mat-button color="warn" (click)="cancel()"><mat-icon>cancel</mat-icon>Anuluj</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

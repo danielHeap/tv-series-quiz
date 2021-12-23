@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-card-title>Pytania</mat-card-title>
+  <mat-card-actions>
+    <button *ngIf="!showAdd" mat-button color="primary" (click)="openAdd()">
+      <mat-icon>add_box</mat-icon>
+      Dodaj pytanie
+    </button>
+  </mat-card-actions>
+  <mat-card-content>
+    <app-add-question *ngIf="showAdd" (closed)="hideAdd()"></app-add-question>
+
+    <ng-container *ngIf="questions && !isLoading; else loader">
+      <app-question-view *ngFor="let question of questions" [question]="question"></app-question-view>
+    </ng-container>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #loader>
+  <mat-spinner></mat-spinner>
+</ng-template>

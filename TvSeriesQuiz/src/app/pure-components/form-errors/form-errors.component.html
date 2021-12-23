@@ -1,0 +1,9 @@
+<ng-container *ngIf="form.touched || alwaysShow">
+  <ng-container *ngFor="let error of formErrors">
+    <ng-container [ngSwitch]="error">
+      <p *ngSwitchCase="'required'">*Pole jest wymagane</p>
+      <p *ngSwitchCase="'minlength'">*Minimalna długość to {{ minLengthValues?.requiredLength }}</p>
+      <p *ngSwitchDefault>*{{ error }}</p>
+    </ng-container>
+  </ng-container>
+</ng-container>

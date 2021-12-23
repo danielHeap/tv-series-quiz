@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-title>
+    <div class="d-flex">
+      <mat-icon>help outline icon</mat-icon>
+      {{ question.question }}
+      <div class="flex-spacer"></div>
+
+      <button class="delete-btn" mat-button color="warn" (click)="detete()">
+        <mat-icon>delete_box</mat-icon>
+      </button>
+    </div>
+  </mat-card-title>
+  <mat-card-content>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Odpowiedzi </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-list>
+          <mat-list-item *ngFor="let answer of question.answers">
+            <mat-icon>label</mat-icon> {{ answer.answer }}
+          </mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+  <mat-action-list>
+    <!-- <button mat-icon-button color="primary">
+      <mat-icon>add_box</mat-icon>
+    </button> -->
+  </mat-action-list>
+</mat-card>
