@@ -1,10 +1,10 @@
 import { collection, Firestore, getDoc, getDocs, query, runTransaction, where } from 'firebase/firestore';
-import { QuestionViewService } from './../questions-view/question-view.service';
 import { DialogConfirmComponent } from './../../pure-components/dialog-confirm/dialog-confirm.component';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { QuestionModel } from 'src/shared/models/question.model';
 import { doc, deleteDoc } from 'firebase/firestore';
+import { QuestionsQueryService } from 'src/shared/services/questions-query.service';
 
 @Component({
   selector: 'app-question-view',
@@ -17,7 +17,7 @@ export class QuestionViewComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private questionViewService: QuestionViewService,
+    private questionViewService: QuestionsQueryService,
     private firestore: Firestore
   ) {}
 
@@ -43,7 +43,7 @@ export class QuestionViewComponent implements OnInit {
         await deleteDoc(doc.ref);
       });
 
-      this.questionViewService.reloadQuestions();
+      this.questionViewService.reload();
       console.log('Transaction successfully committed!');
     } catch (e) {
       console.log('Transaction failed: ', e);

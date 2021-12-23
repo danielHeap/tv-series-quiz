@@ -1,0 +1,35 @@
+<mat-card *ngIf="!completed" class="adding-card">
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Nazwa</mat-label>
+      <input matInput placeholder="Podaj nazwę drużyny" formControlName="name" />
+    </mat-form-field>
+    <app-form-errors [form]="form.name"></app-form-errors>
+
+    <mat-form-field>
+      <div>
+        <mat-toolbar>
+          <input matInput [value]="selectedFileNames.length ? selectedFileNames : 'Dodaj zdjęcie'" />
+        </mat-toolbar>
+
+        <input
+          type="file"
+          id="fileInput"
+          name="fileInput"
+          accept="image/*"
+          [multiple]="false"
+          (change)="selectFiles($event)"
+        />
+      </div>
+    </mat-form-field>
+
+    <div>
+      <img *ngFor="let preview of previews" [src]="preview" class="preview" />
+    </div>
+
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="save()"><mat-icon>save</mat-icon>Zapisz</button>
+      <button mat-button color="warn" (click)="cancel()"><mat-icon>cancel</mat-icon>Anuluj</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

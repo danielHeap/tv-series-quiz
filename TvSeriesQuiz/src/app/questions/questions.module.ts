@@ -1,3 +1,4 @@
+import { MatDividerModule } from '@angular/material/divider';
 import { AddQuestionModule } from './add-question/add-question.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,6 +25,7 @@ import { QuestionsRootingModule } from './questions-routing.module';
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatDividerModule,
   ],
   exports: [QuestionsViewComponent],
 })

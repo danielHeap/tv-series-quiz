@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ team.name }}</mat-card-title>
+  </mat-card-header>
+
+  <div class="image-container">
+    <img mat-card-image [src]="pictureUrl" alt="Zdjęcie zespołu" />
+  </div>
+  <mat-card-actions>
+    <div class="d-flex">
+      <div class="flex-spacer"></div>
+      <button class="delete-btn" mat-button color="warn" (click)="delete()">
+        <mat-icon>delete_box</mat-icon>
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

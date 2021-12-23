@@ -5,3 +5,10 @@
 .d-flex {
   display: flex;
 }
+
+.adding-card {
+  max-width: 500px;
+  mat-form-field {
+    width: 100%;
+  }
+}

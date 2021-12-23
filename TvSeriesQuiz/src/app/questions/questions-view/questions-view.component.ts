@@ -3,7 +3,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { getFirestore } from 'firebase/firestore';
 import { Subscription } from 'rxjs';
 import { QuestionModel } from 'src/shared/models/question.model';
-import { QuestionViewService } from './question-view.service';
+import { QuestionsQueryService } from 'src/shared/services/questions-query.service';
 
 @Component({
   selector: 'app-questions-view',
@@ -19,7 +19,7 @@ export class QuestionsViewComponent implements OnInit, OnDestroy {
     return this.questionViewService.isLoading;
   }
 
-  constructor(private questionViewService: QuestionViewService) {
+  constructor(private questionViewService: QuestionsQueryService) {
     this.initData();
   }
   ngOnDestroy(): void {
@@ -33,11 +33,11 @@ export class QuestionsViewComponent implements OnInit, OnDestroy {
   }
   hideAdd() {
     this.showAdd = false;
-    this.questionViewService.reloadQuestions();
+    this.questionViewService.reload();
   }
 
   private initData() {
-    this.questionsSub = this.questionViewService.getQuestions().subscribe((questions) => {
+    this.questionsSub = this.questionViewService.getData().subscribe((questions) => {
       this.questions = questions;
     });
   }

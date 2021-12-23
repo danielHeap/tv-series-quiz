@@ -2,7 +2,10 @@ import { QuestionsViewComponent } from './questions-view/questions-view.componen
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [{ path: '**', component: QuestionsViewComponent }];
+const routes: Routes = [
+  // { path: '', component: QuestionsViewComponent },
+  { path: '**', component: QuestionsViewComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -1,5 +1,7 @@
 <mat-card>
   <mat-card-title>Pytania</mat-card-title>
+  <mat-divider></mat-divider>
+
   <mat-card-actions>
     <button *ngIf="!showAdd" mat-button color="primary" (click)="openAdd()">
       <mat-icon>add_box</mat-icon>
@@ -7,7 +9,10 @@
     </button>
   </mat-card-actions>
   <mat-card-content>
-    <app-add-question *ngIf="showAdd" (closed)="hideAdd()"></app-add-question>
+    <div class="add-container" *ngIf="showAdd">
+      <app-add-question *ngIf="showAdd" (closed)="hideAdd()"></app-add-question>
+    </div>
+    <mat-divider *ngIf="showAdd"></mat-divider>
 
     <ng-container *ngIf="questions && !isLoading; else loader">
       <app-question-view *ngFor="let question of questions" [question]="question"></app-question-view>

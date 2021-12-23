@@ -1,0 +1,30 @@
+<mat-card>
+  <mat-card-title>Drużyny</mat-card-title>
+  <mat-divider></mat-divider>
+
+  <mat-card-actions>
+    <button *ngIf="!showAdd" mat-button color="primary" (click)="openAdd()">
+      <mat-icon>add_box</mat-icon>
+      Dodaj drużynę
+    </button>
+  </mat-card-actions>
+  <mat-card-content>
+    <div class="add-container" *ngIf="showAdd">
+      <app-add-team (closed)="hideAdd($event)" (saving)="showLoader()"></app-add-team>
+    </div>
+    <mat-divider *ngIf="showAdd"></mat-divider>
+
+    <!-- <div class="teams-box">
+      <app-team-view [team]="team" *ngFor="let team of data"></app-team-view>
+    </div> -->
+    <mat-grid-list *ngIf="!isLoading; else loader" [cols]="columns" [rowHeight]="'500px'">
+      <mat-grid-tile *ngFor="let team of data">
+        <app-team-view [team]="team"></app-team-view>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #loader>
+  <mat-spinner></mat-spinner>
+</ng-template>
